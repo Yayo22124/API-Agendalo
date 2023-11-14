@@ -5,12 +5,7 @@ import { BOOLEAN, DataTypes } from "sequelize";
 import User from "./user.model";
 import database from "../Config/database";
 
-const Person = database.define("tbb_users", {
-    ID: {
-        type: DataTypes.INTEGER,
-        primaryKEy: true,
-        autoIncrement: true
-    },
+const Person = database.define("tbb_people", {
     name: {
         type: DataTypes.STRING(255),
         allowNull: false
@@ -34,7 +29,7 @@ const Person = database.define("tbb_users", {
 
 
 // Person - User
-Person.hasMany(User, { foreignKey: 'personaID' });
+// Person.hasMany(User, { foreignKey: 'personaID' });
 
 
 
