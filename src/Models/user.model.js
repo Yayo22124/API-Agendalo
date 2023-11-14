@@ -2,9 +2,10 @@
 
 import { BOOLEAN, DataTypes } from "sequelize";
 
-import db from '../config/database.js'
+import Person from "./Person.model";
+import database from "../Config/database";
 
-const User = db.define("tbb_users", {
+const User = database.define("tbb_users", {
     name: {
         type: DataTypes.STRING(255),
         allowNull: false
@@ -33,19 +34,19 @@ const User = db.define("tbb_users", {
         defaultValue: false
 
     }
-}, {
-    hooks: {
-        beforeCreate: async (User) => {
-            const salt = await bcrypt.genSalt(10);
-            User.password = await bcrypt.hash(User.password, salt);
-        }
-    }
-})
+}
+    // hooks: {
+    //     beforeCreate: async (User) => {
+    //         const salt = await bcrypt.genSalt(10);
+    //         User.password = await bcrypt.hash(User.password, salt);
+    //     }
+    // }
+)
 
 // Comparar contraseñas (contraseña pasada como param y la contraseña de la bd (User))
-User.prototype.verifyPassword = function(password) {
-    return bcrypt.compareSync(password, this.password);
-}
+// User.prototype.verifyPassword = function(password) {
+//     return bcrypt.compareSync(password, this.password);
+// }
+User.belongsTo(Person, { foreignKey: 'personaID' });
 
-User.hasMany(Property, { foreignKey: 'owner_id' });
 export default User;

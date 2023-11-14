@@ -2,10 +2,11 @@
 
 import { BOOLEAN, DataTypes } from "sequelize";
 
-import db from '../config/database.js'
+import User from "./user.model";
+import database from "../Config/database";
 
-const Person = db.define("tbb_users", {
-    ID:{
+const Person = database.define("tbb_users", {
+    ID: {
         type: DataTypes.INTEGER,
         primaryKEy: true,
         autoIncrement: true
@@ -30,5 +31,11 @@ const Person = db.define("tbb_users", {
 
     }
 })
+
+
+// Person - User
+Person.hasMany(User, { foreignKey: 'personaID' });
+
+
 
 export default Person;
