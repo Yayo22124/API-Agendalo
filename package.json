@@ -1,12 +1,17 @@
 {
   "name": "api-agendalo",
-  "description": "",
+  "description": "Backend of Agendalo's Services application, made with Node.js, Express and MySQL (Sequelize).",
   "version": "1.0.0",
   "main": "index.js",
   "keywords": [
     "agendalo",
+    "express",
     "node.js",
-    ""
+    "dotenv",
+    "utxj",
+    "sequelize",
+    "nodemon",
+    "morgan"
   ],
   "author": "",
   "license": "ISC",
