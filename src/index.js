@@ -1,4 +1,4 @@
-import app from "./server.js"
+import app from "./app.js"
 import chalk from 'chalk';
 
 app.listen(app.get('PORT'), () => {
