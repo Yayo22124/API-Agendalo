@@ -20,13 +20,12 @@ const Person = database.define("tbb_people", {
         unique: true
     },
     gender: {
-        type: DataTypes.BOOLEAN,
+        type: DataTypes.ENUM("Masculino", "Femenino", "No Binario"),
         allowNull: false,
-        defaultValue: false
 
     }
 })
-
+let number;
 
 // Person - User
 // Person.hasMany(User, { foreignKey: 'personaID' });
