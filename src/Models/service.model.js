@@ -1,22 +1,12 @@
-import { DataTypes } from "sequelize"
+import { DataTypes } from 'sequelize';
 
-const service = db.define('tbb_service', {
+const Service = db.define('tbb_service', {
     name_service: {
         type: DataTypes.STRING,
         allowNull: false
     },
     description: {
         type: DataTypes.TEXT,
-        allowNull: false,
-        unique: true
-    },
-    provider: {//LAVE FORANEA 
-        type: DataTypes.INTERGER,
-        allowNull: false,
-        unique: true
-    },
-    category: {//LAVE FORANEA 
-        type: DataTypes.INTERGER,
         allowNull: false,
         unique: true
     },
@@ -34,7 +24,7 @@ const service = db.define('tbb_service', {
     }
 
 })
-export default service;
+export default Service;
 
 
 

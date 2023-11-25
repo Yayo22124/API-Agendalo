@@ -4,11 +4,7 @@ import db from '../config/db.js';
 
 const Provider = db.define("tbb_provider",
 {
-    //llave foránea
-    // service: 
-    // {
-    //     
-    // }
+   
 }
 );
 

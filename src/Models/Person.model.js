@@ -16,13 +16,16 @@ const Person = database.define("tbb_people", {
     },
     birthDate: {
         type: DataTypes.DATE,
-        allowNull: false,
-        unique: true
+        allowNull: false
     },
     gender: {
         type: DataTypes.ENUM("Masculino", "Femenino", "No Binario"),
         allowNull: false,
-
+        
+    },
+    title:{
+        type: DataTypes.STRING(10),
+        allowNull: false,
     }
 })
 let number;

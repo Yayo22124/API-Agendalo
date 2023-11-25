@@ -1,14 +1,7 @@
 import database from "../Config/database";
 
 const Address = database.define('tbb_address', {
-    natural_person: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        references: {
-            model: '', 
-            key: 'id' 
-        }
-    },
+    
     superior_adress: {
         type: DataTypes.INTEGER,
         allowNull: true
