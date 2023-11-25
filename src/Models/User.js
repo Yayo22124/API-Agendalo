@@ -2,14 +2,6 @@ import database from "../Config/database";
 import bcrypt from 'bcrypt';
 
 const User = database.define('tbb_user', {
-    persona: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-        references: {
-            model: '',
-            key: 'id'
-        }
-    },
     estatus: {
         type: DataTypes.BOOLEAN,
         defaultValue: true

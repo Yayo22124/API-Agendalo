@@ -30,9 +30,9 @@ const Legal_person = db.define("tbb_legal_person",
         type: DataTypes.STRING(50),
         allowNull: false   
     },
-    staring_day:
+    starting_day:
     {
-        type: DataTypes.DATEONLY,
+        type: DataTypes.DATE,
         allowNull: false   
     },
     tax:
@@ -40,21 +40,7 @@ const Legal_person = db.define("tbb_legal_person",
         type: DataTypes.INTEGER,
         allowNull: false 
     }
-    // Llaves foráneas
-    // address:
-    // {
-
-    // }
-    // natural_person:
-    // {
-
-    // },
-    // legal_person:
-    // {
-
-    // }
-}
-);
+});
 
 export default Legal_person;
  

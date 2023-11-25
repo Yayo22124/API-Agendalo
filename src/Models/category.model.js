@@ -1,6 +1,6 @@
 import { DataTypes } from "sequelize"
 
-const tbb_category = db.define('tbb_category', {
+const Category = db.define('tbb_category', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -10,6 +10,8 @@ const tbb_category = db.define('tbb_category', {
         allowNull: false
     },
 })
+
+export default Category;
 
 
 
