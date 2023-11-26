@@ -2,8 +2,7 @@
 
 import { BOOLEAN, DataTypes } from "sequelize";
 
-import User from "./user.model";
-import database from "../Config/database";
+import database from "../Config/database.js";
 
 const Person = database.define("tbb_people", {
     name: {

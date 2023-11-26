@@ -1,10 +1,13 @@
 import { DataTypes } from "sequelize"
+import database from "../Config/database.js"
 
-const serviceDetails = db.define('tbb_serviceDetails', {
+const serviceDetails = database.define('tbb_serviceDetails', {
     
 })
 export default serviceDetails;
 
 
+
+Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
 
 

@@ -1,8 +1,10 @@
 //Elemento del ORM que permitirá difinir los tipos de datos de las propiedades (columnas de la base de datos)
-import { DataTypes } from "sequelize";
-import db from '../config/db.js';
 
-const Natural_person = db.define("tbb_natural_person",
+import { DataTypes } from "sequelize";
+import Person from "./Person.model.js";
+import database from '../Config/database.js';
+
+const Natural_person = database.define("tbb_natural_person",
 {
     //Razón social
     business_name: 
@@ -24,6 +26,9 @@ const Natural_person = db.define("tbb_natural_person",
    
 }
 );
+
+//Person.hasOne(Natural_person)
+Natural_person.belongsTo(Person, { foreignKey: 'personId' })
 
 export default Natural_person;
  

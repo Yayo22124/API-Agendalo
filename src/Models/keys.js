@@ -1,4 +1,4 @@
-import Address from './Adress.js'
+import Address from './Address.js'
 import Category from './category.model.js'
 import Legal_person from './Legal_person.js'
 import Location from './Location.js'
@@ -14,9 +14,11 @@ import User from './User.js'
 // Bar.belongsTo(Foo, {
 //   foreignKey: 'myFooId'
 // });
-
+const keys = {
+    
+}
 //Location.hasOne(Address)
-Address.belongsTo(Location, { foreignKey: 'locationId' })
+Address.belongsTo(Location, { foreignKey: 'locationId' }),
 
 //Address.hasOne(User)
 User.belongsTo(Address, { foreignKey: 'addressId'})
@@ -53,3 +55,5 @@ Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
 //Option 2
 Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
 Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
+
+export default 

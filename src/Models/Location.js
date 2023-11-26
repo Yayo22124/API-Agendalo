@@ -1,7 +1,7 @@
 import { DataTypes } from "sequelize";
-import db from '../config/db.js';
+import database from "../Config/database.js";
 
-const Location = db.define('tbb_category', {
+const Location = database.define('tbb_category', {
     latitud: {
         type: DataTypes.STRING,
         allowNull: false

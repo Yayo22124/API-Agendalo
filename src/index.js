@@ -1,4 +1,4 @@
-import app from "./server.js"
+import app from "./app.js"
 
 app.listen(app.get('PORT'), () => {
     console.log(`-------------------------------------------- \n

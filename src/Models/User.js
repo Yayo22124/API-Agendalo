@@ -1,5 +1,9 @@
-import database from "../Config/database";
+import { DataTypes, Sequelize } from 'sequelize';
+
+import Address from './Address.js';
+import Person from './Person.model.js';
 import bcrypt from 'bcrypt';
+import database from "../Config/database.js";
 
 const User = database.define('tbb_user', {
     estatus: {
@@ -24,5 +28,11 @@ const User = database.define('tbb_user', {
     },
     timestamps: true
 });
+
+//Address.hasOne(User)
+User.belongsTo(Address, { foreignKey: 'addressId'})
+//Person.hasOne(User)
+User.belongsTo(Person, { foreignKey: 'personId' })
+
 
 export default User;

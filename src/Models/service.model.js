@@ -1,6 +1,9 @@
+import Category from './category.model.js';
 import { DataTypes } from 'sequelize';
+import Provider from './Provider.js';
+import database from '../Config/database.js';
 
-const Service = db.define('tbb_service', {
+const Service = database.define('tbb_service', {
     name_service: {
         type: DataTypes.STRING,
         allowNull: false
@@ -24,9 +27,9 @@ const Service = db.define('tbb_service', {
     }
 
 })
+
+// Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
+Service.belongsTo(Provider, { foreignKey: 'providerId'});
+
+
 export default Service;
-
-
-
-
-

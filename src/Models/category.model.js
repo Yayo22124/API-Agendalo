@@ -1,6 +1,8 @@
 import { DataTypes } from "sequelize"
+import Service from "./service.model.js";
+import database from "../Config/database.js";
 
-const Category = db.define('tbb_category', {
+const Category = database.define('tbb_category', {
     name: {
         type: DataTypes.STRING,
         allowNull: false
@@ -11,9 +13,6 @@ const Category = db.define('tbb_category', {
     },
 })
 
+Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
+
 export default Category;
-
-
-
-
-
