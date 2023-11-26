@@ -8,6 +8,8 @@ import User from "./Models/User.js";
 import chalk from "chalk";
 import database from "./Config/database.js";
 import express from "express";
+import morgan from "morgan";
+import userRoutes from "./Routes/user.routes.js"
 
 const app = express();
 
@@ -23,7 +25,7 @@ try {
             console.log('Tablas sincronizadas');
         })
         .catch(err => console.error('Error al sincronizar y/o insertar datos:', err));
-    console.log(chalk.green ("\n##################################################\n"))
+    console.log(chalk.green("\n##################################################\n"))
     console.log(chalk.green(`Synchronization to MySQL database finished.`))
     console.log(chalk.green("\n##################################################"))
 } catch (err) {
@@ -33,6 +35,12 @@ try {
     console.log(chalk.red("xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx\n"))
 }
 
+// Setting
 app.set('PORT', process.env.PORT || 3000)
+
+// Middlewares
+app.use(morgan('dev')); //! Morgan
+app.use(express.urlencoded({ extended: true })); //! URL Encoded
+app.use('/api/agendalo/user/', userRoutes); //! User Routes
 
 export default app;
