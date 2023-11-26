@@ -16,7 +16,7 @@ try {
             console.log('Tablas sincronizadas');
         })
         .catch(err => console.error('Error al sincronizar y/o insertar datos:', err));
-    console.log(chalk.green("\n##################################################\n"))
+    console.log(chalk.green ("\n##################################################\n"))
     console.log(chalk.green(`Synchronization to MySQL database finished.`))
     console.log(chalk.green("\n##################################################"))
 } catch (err) {

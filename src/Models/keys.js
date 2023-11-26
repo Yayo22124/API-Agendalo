@@ -51,5 +51,5 @@ Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
 //Category.belongsTo(Service);
 
 //Option 2
-Service.hasMany(Category);
-Category.belongsTo(Service, { foreignKey: 'serviceId' });
+Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
+Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
