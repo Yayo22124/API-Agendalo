@@ -52,13 +52,8 @@ userController.createUser = async (req, res) => {
     const newUser = await User.create({
       email,
       password,
-      personId
+      personId: personId
     })
-
-    // Obtener el ID del usuario
-    const userId = newUser.id;
-    // Relacionar User-Person
-    await newUser.setPerson(newPerson);
 
     res.status(200).json({
       status: true,
