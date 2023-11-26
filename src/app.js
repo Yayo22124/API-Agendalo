@@ -13,6 +13,8 @@ import userRoutes from "./Routes/user.routes.js"
 
 const app = express();
 
+app.use(express.json());
+
 // database connection
 try {
     await database.authenticate();
