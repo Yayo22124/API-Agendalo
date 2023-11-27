@@ -1,7 +1,7 @@
 import { DataTypes, Sequelize } from 'sequelize';
 
 import Address from './Address.js';
-import Person from './Person.model.js';
+import Person from './Person.js';
 import bcrypt from 'bcrypt';
 import database from "../Config/database.js";
 

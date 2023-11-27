@@ -1,4 +1,4 @@
-import Person from '../Models/Person.model.js';
+import Person from '../Models/Person.js';
 import User from '../Models/User.js';
 import bcrypt from 'bcrypt';
 import express from 'express';

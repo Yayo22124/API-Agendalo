@@ -1,4 +1,4 @@
-import Category from './category.model.js';
+import Category from './Category.js';
 import { DataTypes } from 'sequelize';
 import Provider from './Provider.js';
 import database from '../Config/database.js';
