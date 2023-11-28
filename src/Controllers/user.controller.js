@@ -30,13 +30,12 @@ userController.getOne = async (req, res) => {
   }
 };
 
-// TODO: CREAR UN NUEVO USUARIO
+// !PROBANDO ...
 userController.createUser = async (req, res) => {
   const { name, lastName, email, title, gender, birthDate, password } = req.body;
-  console.log(req.body);
-  console.log(req.params);
+
   try {
-    // Crear primero a la persona
+    // CREAR PRIMERO A LA PERSONA
     const newPerson = await Person.create({
       name,
       lastName,
@@ -45,25 +44,26 @@ userController.createUser = async (req, res) => {
       title,
     });
 
-    // Obtener ID de la persona creada
+    // OBTENER EL ID DE LA PERSONA CREADA
     const personId = newPerson.id;
 
-    // Crear al usuario
+    // CREAR AL USUARIO
     const newUser = await User.create({
       email,
       password,
-      personId: personId
-    })
+      personId,
+    });
 
     res.status(200).json({
       status: true,
-      msg: "User succesfully created"
+      msg: "User successfully created",
     });
   } catch (error) {
-    res.status(500).json({ status: false, msg: 'Error on create user.',
-  error });
+    console.error(error); 
+    res.status(500).json({ status: false, msg: 'Error al crear usuario.', error });
   }
 };
+
 
 // TODO: ACTUALIZA UN USUARIO
 userController.updateUser = async (req, res) => {
