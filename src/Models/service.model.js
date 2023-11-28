@@ -28,8 +28,5 @@ const Service = database.define('tbb_service', {
 
 })
 
-// Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
-Service.belongsTo(Provider, { foreignKey: 'providerId'});
-
 
 export default Service;

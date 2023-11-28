@@ -1,10 +1,18 @@
-import Address from "./Models/Address.js";
-import Category from "./Models/category.model.js";
-import Legal_person from "./Models/Legal_person.js";
-import Location from "./Models/Location.js"
-import Natural_person from "./Models/Natural_person.js";
-import Person from "./Models/Person.model.js";
-import User from "./Models/User.js";
+// Index of models
+
+import {
+    Address,
+    Category,
+    Legal_person,
+    Location,
+    Natural_person,
+    Person,
+    Provider,
+    Service,
+    Service_details,
+    User
+} from "./Models/keys.js"
+
 import chalk from "chalk";
 import database from "./Config/database.js";
 import express from "express";
@@ -23,7 +31,7 @@ try {
             console.log('Tablas sincronizadas');
         })
         .catch(err => console.error('Error al sincronizar y/o insertar datos:', err));
-    console.log(chalk.green ("\n##################################################\n"))
+    console.log(chalk.green("\n##################################################\n"))
     console.log(chalk.green(`Synchronization to MySQL database finished.`))
     console.log(chalk.green("\n##################################################"))
 } catch (err) {

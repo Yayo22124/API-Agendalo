@@ -29,9 +29,5 @@ const Person = database.define("tbb_people", {
 })
 let number;
 
-// Person - User
-// Person.hasMany(User, { foreignKey: 'personaID' });
-
-
 
 export default Person;

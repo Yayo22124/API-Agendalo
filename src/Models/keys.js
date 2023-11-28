@@ -14,9 +14,6 @@ import User from './User.js'
 // Bar.belongsTo(Foo, {
 //   foreignKey: 'myFooId'
 // });
-const keys = {
-    
-}
 //Location.hasOne(Address)
 Address.belongsTo(Location, { foreignKey: 'locationId' }),
 
@@ -56,4 +53,16 @@ Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
 Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
 Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
 
-export default 
+export {
+    Provider,
+    User,
+    Person,
+    Category,
+    Service,
+    Service_details,
+    Address,
+    Legal_person,
+    Natural_person,
+    Location,
+    
+};

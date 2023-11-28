@@ -5,9 +5,3 @@ const serviceDetails = database.define('tbb_serviceDetails', {
     
 })
 export default serviceDetails;
-
-
-
-Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
-
-
