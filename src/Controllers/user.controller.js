@@ -1,21 +1,24 @@
-import express from 'express';
+import Person from '../Models/Person.js';
 import User from '../Models/User.js';
 import bcrypt from 'bcrypt';
+import express from 'express';
+import jwt from 'jsonwebtoken';
+import { secretKey } from '../Config/keys.js';
 
-const router = express.Router();
+const userController = {};
 
 // TODO: OBTENER TODOS LOS USUARIOS
-router.get('/users', async (req, res) => {
+userController.getAll = async (req, res) => {
   try {
     const users = await User.findAll();
     res.json(users);
   } catch (error) {
     res.status(500).json({ error: 'ERROR GETTING USERS' });
   }
-});
+};
 
 // TODO: OBTENER USUARIO POR ID
-router.get('/users/:id', async (req, res) => {
+userController.getOne = async (req, res) => {
   const userId = req.params.id;
   try {
     const user = await User.findByPk(userId);
@@ -27,27 +30,45 @@ router.get('/users/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'ERROR GETTING USER' });
   }
-});
+};
 
-// TODO: CREAR UN NUEVO USUARIO
-router.post('/users', async (req, res) => {
-  const { persona, email, password } = req.body;
+// !PROBANDO ...
+userController.createUser = async (req, res) => {
+  const { name, lastName, email, title, gender, birthDate, password } = req.body;
 
   try {
-    const newUser = await User.create({
-      persona,
-      email,
-      password: await bcrypt.hash(password, 10),
+    // CREAR PRIMERO A LA PERSONA
+    const newPerson = await Person.create({
+      name,
+      lastName,
+      birthDate,
+      gender,
+      title,
     });
 
-    res.json(newUser);
+    // OBTENER EL ID DE LA PERSONA CREADA
+    const personId = newPerson.id;
+
+    // CREAR AL USUARIO
+    const newUser = await User.create({
+      email,
+      password,
+      personId,
+    });
+
+    res.status(200).json({
+      status: true,
+      msg: "User successfully created",
+    });
   } catch (error) {
-    res.status(500).json({ error: 'ERROR CREATE USER' });
+    console.error(error); 
+    res.status(500).json({ status: false, msg: 'Error al crear usuario.', error });
   }
-});
+};
+
 
 // TODO: ACTUALIZA UN USUARIO
-router.put('/users/:id', async (req, res) => {
+userController.updateUser = async (req, res) => {
   const userId = req.params.id;
   const { persona, email, password } = req.body;
 
@@ -68,10 +89,10 @@ router.put('/users/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'ERROR UPDATE USER' });
   }
-});
+};
 
 // TODO: ELIMINAR USUARIO
-router.delete('/users/:id', async (req, res) => {
+userController.deleteUser = async (req, res) => {
   const userId = req.params.id;
 
   try {
@@ -86,6 +107,30 @@ router.delete('/users/:id', async (req, res) => {
   } catch (error) {
     res.status(500).json({ error: 'ERROR TO DELETE USER' });
   }
-});
+};
 
-export default router;
+//!PRUEBA
+userController.login = async (req, res) => {
+  const { email, password } = req.body;
+
+  // VERIFICAR LAS CREDENCIALES DEL USUARIO EN LA BASE DE DATOS
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user || !(await user.comparePassword(password))) {
+      // USUARIO NO ENCONTRADO O PASSWORD INCORRECTO
+      return res.status(401).json({ msg: 'Credenciales inválidas' });
+    }
+
+    //USUARIO AUTENTICADO, GENERAR TOKEN JWT
+    const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' });
+
+    // ENVIAMOS EL TOKEN AL CLIENTE
+    res.json({ token });
+  } catch (error) {
+    console.error('Error en el inicio de sesión:', error);
+    res.status(500).json({ msg: 'Error en el inicio de sesión' });
+  }
+};
+
+export default userController;

@@ -1,7 +1,7 @@
 //Elemento del ORM que permitirá difinir los tipos de datos de las propiedades (columnas de la base de datos)
 
 import { DataTypes } from "sequelize";
-import Person from "./Person.model.js";
+import Person from "./Person.js";
 import database from "../Config/database.js"
 
 const Legal_person = database.define("tbb_legal_person",
