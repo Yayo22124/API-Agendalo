@@ -19,6 +19,10 @@ import express from "express";
 
 const app = express();
 
+// Setting express app in json
+app.use(express.json());
+
+
 // database connection
 try {
     await database.authenticate();
@@ -42,5 +46,11 @@ try {
 }
 
 app.set('PORT', process.env.PORT || 3000)
+
+// Middlewares
+app.use(morgan('dev')); //! Morgan
+app.use(express.urlencoded({ extended: true })); //! URL Encoded
+app.use('/api/agendalo/user/', userRoutes); //! User Routes
+
 
 export default app;
