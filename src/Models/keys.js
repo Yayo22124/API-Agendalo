@@ -52,7 +52,6 @@ Service_details.belongsTo(Service, { foreignKey: 'serviceId' })
 //Option 2
 Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
 Service.belongsToMany(Category, {through: 'ServiceHasCategory'});
-<<<<<<< HEAD
 
 export {
     Provider,
@@ -67,5 +66,3 @@ export {
     Location,
     
 };
-=======
->>>>>>> main

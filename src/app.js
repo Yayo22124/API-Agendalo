@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 // Index of models
 
 import {
@@ -14,15 +13,6 @@ import {
     User
 } from "./Models/keys.js"
 
-=======
-import Address from "./Models/Address.js";
-import Category from "./Models/Category.js";
-import Legal_person from "./Models/Legal_person.js";
-import Location from "./Models/Location.js"
-import Natural_person from "./Models/Natural_person.js";
-import Person from "./Models/Person.js";
-import User from "./Models/User.js";
->>>>>>> main
 import chalk from "chalk";
 import database from "./Config/database.js";
 import express from "express";
@@ -31,15 +21,10 @@ import userRoutes from "./Routes/user.routes.js"
 
 const app = express();
 
-<<<<<<< HEAD
 // Setting express app in json
 app.use(express.json());
 
 
-=======
-app.use(express.json());
-
->>>>>>> main
 // database connection
 try {
     await database.authenticate();
@@ -70,8 +55,4 @@ app.use(morgan('dev')); //! Morgan
 app.use(express.urlencoded({ extended: true })); //! URL Encoded
 app.use('/api/agendalo/user/', userRoutes); //! User Routes
 
-<<<<<<< HEAD
-
-=======
->>>>>>> main
 export default app;
