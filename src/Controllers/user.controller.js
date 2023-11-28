@@ -2,6 +2,8 @@ import Person from '../Models/Person.js';
 import User from '../Models/User.js';
 import bcrypt from 'bcrypt';
 import express from 'express';
+import jwt from 'jsonwebtoken';
+import { secretKey } from '../Config/keys.js';
 
 const userController = {};
 
@@ -104,6 +106,30 @@ userController.deleteUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ error: 'ERROR TO DELETE USER' });
+  }
+};
+
+//!PRUEBA
+userController.login = async (req, res) => {
+  const { email, password } = req.body;
+
+  // VERIFICAR LAS CREDENCIALES DEL USUARIO EN LA BASE DE DATOS
+  try {
+    const user = await User.findOne({ where: { email } });
+
+    if (!user || !(await user.comparePassword(password))) {
+      // USUARIO NO ENCONTRADO O PASSWORD INCORRECTO
+      return res.status(401).json({ msg: 'Credenciales inválidas' });
+    }
+
+    //USUARIO AUTENTICADO, GENERAR TOKEN JWT
+    const token = jwt.sign({ userId: user.id }, secretKey, { expiresIn: '1h' });
+
+    // ENVIAMOS EL TOKEN AL CLIENTE
+    res.json({ token });
+  } catch (error) {
+    console.error('Error en el inicio de sesión:', error);
+    res.status(500).json({ msg: 'Error en el inicio de sesión' });
   }
 };
 
