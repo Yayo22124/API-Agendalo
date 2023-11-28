@@ -13,6 +13,4 @@ const Category = database.define('tbb_category', {
     },
 })
 
-Category.belongsToMany(Service, { through: 'ServiceHasCategory' });
-
 export default Category;

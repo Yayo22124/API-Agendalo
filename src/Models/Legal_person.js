@@ -44,8 +44,5 @@ const Legal_person = database.define("tbb_legal_person",
     }
 });
 
-Legal_person.belongsTo(Person, { foreignKey: 'personId' })
-
-
 export default Legal_person;
  

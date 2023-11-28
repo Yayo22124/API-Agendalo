@@ -29,10 +29,4 @@ const User = database.define('tbb_user', {
     timestamps: true
 });
 
-//Address.hasOne(User)
-User.belongsTo(Address, { foreignKey: 'addressId'})
-//Person.hasOne(User)
-User.belongsTo(Person, { foreignKey: 'personId' })
-
-
 export default User;

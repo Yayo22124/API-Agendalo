@@ -29,8 +29,5 @@ const Address = database.define('tbb_address', {
     timestamps: true
 });
 
-//Location.hasOne(Address)
-Address.belongsTo(Location, { foreignKey: 'locationId' })
-
 
 export default Address;

@@ -27,8 +27,5 @@ const Natural_person = database.define("tbb_natural_person",
 }
 );
 
-//Person.hasOne(Natural_person)
-Natural_person.belongsTo(Person, { foreignKey: 'personId' })
 
-export default Natural_person;
- 
+export default Natural_person; 
