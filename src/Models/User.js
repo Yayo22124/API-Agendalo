@@ -23,7 +23,7 @@ const User = database.define('tbb_user', {
     hooks: {
         beforeCreate: async (tbb_user) => {
             const salt = await bcrypt.genSalt(10);
-            tbb_user.PASSWORD = await bcrypt.hash(tbb_user.PASSWORD, salt);
+            tbb_user.password = await bcrypt.hash(tbb_user.password, salt);
         }
     },
     timestamps: true
