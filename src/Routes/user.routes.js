@@ -1,7 +1,11 @@
 import express from 'express';
 import userController from '../Controllers/user.controller.js';
+import authenticateUser from '../middleware/auth.js'
 
 const router = express.Router();
+ 
+//! RUTAS PUBLICAS SIN AUTENTICACION
+router.post('/login', userController.login); // RUTA PARA EL INICIO DE SESION
 
 router.get('/getAll', userController.getAll);
 router.get('/getOne/:id', userController.getOne);
