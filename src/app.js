@@ -14,6 +14,7 @@ import {
 } from "./Models/keys.js"
 
 import chalk from "chalk";
+import cors from "cors"
 import database from "./Config/database.js";
 import express from "express";
 import morgan from "morgan";
@@ -51,6 +52,13 @@ try {
 app.set('PORT', process.env.PORT || 3000)
 
 // Middlewares
+app.use(cors())
+// app.use((req, res, next) => {
+//     res.header('Access-Control-Allow-Origin', '*'); // Permitir cualquier origen
+//     res.header('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+//     res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+//     next();
+// }); //! CORS
 app.use(morgan('dev')); //! Morgan
 app.use(express.urlencoded({ extended: true })); //! URL Encoded
 app.use('/api/agendalo/user/', userRoutes); //! User Routes
