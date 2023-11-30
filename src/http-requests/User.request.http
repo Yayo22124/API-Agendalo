@@ -4,7 +4,7 @@
 GET http://localhost:3000/api/agendalo/user/getAll
 
 ###* getOne
-GET http://localhost:3000/api/agendalo/user/getOne
+GET http://localhost:3000/api/agendalo/user/getOne/1
 
 ###* createUser
 POST http://localhost:3000/api/agendalo/user/create

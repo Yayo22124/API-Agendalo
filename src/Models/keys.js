@@ -1,12 +1,12 @@
 import Address from './Address.js'
-import Category from './category.model.js'
+import Category from './Category.js'
 import Legal_person from './Legal_person.js'
 import Location from './Location.js'
 import Natural_person from './Natural_person.js'
-import Person from './Person.model.js'
+import Person from './Person.js'
 import Provider from './Provider.js'
 import Service from './service.model.js'
-import Service_details from './serviceDetails.model.js'
+import Service_details from './Service_Details.js'
 import User from './User.js'
 
 //EJEMPLO
