@@ -9,12 +9,12 @@ const Service = database.define('tbb_service', {
         allowNull: false
     },
     description: {
-        type: DataTypes.TEXT,
+        type: DataTypes.STRING(500),
         allowNull: false,
         unique: true
     },
     price: {//DUDA RANGO DE PRECIOS
-        type: DataTypes.DECIMAL,
+        type: DataTypes.DECIMAL(16,2),
         allowNull: false,
     },
     duration: {

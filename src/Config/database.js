@@ -1,11 +1,11 @@
 import Sequelize from 'sequelize';
 import dotenv from 'dotenv';
 
-dotenv.config({path: "src/.env"});
+dotenv.config({ path: "src/.env" });
 
-const database = new Sequelize(process.env.BD_NAME, process.env.BD_USER, process.env.BD_PASSWORD, {
-    host: process.env.BD_HOST,
-    port: process.env.BD_PORT,
+const DATABASE_URL = 'mysql://kvx3v3cfuvv7af63nd3f:pscale_pw_Lxg3KPCo0obg5Ari8cuTYsUCG2vf23Wg82voFjeOwYo@aws.connect.psdb.cloud/mydatabase?'
+
+const database = new Sequelize(DATABASE_URL, {
     dialect: 'mysql',
     define: {
         timestamps: true,
@@ -15,7 +15,12 @@ const database = new Sequelize(process.env.BD_NAME, process.env.BD_USER, process
         min: 0,
         acquire: 30000,
         idle: 10000,
-        operatorAliases: false
+    },
+    operatorAliases: false,
+    dialectOptions: {
+        ssl: {
+            "rejectUnauthorized": true
+        }
     }
 });
 
